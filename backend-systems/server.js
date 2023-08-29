@@ -17,6 +17,12 @@ const handleSum = (req, res)=>{
     res.send("new sum is "+newSum)
 }
 
+const addTwo = (req,res)=>{
+    console.log(req.headers.number);
+    let increaseTwo = parseInt(req.headers.number) + 2
+    res.send("increase two " + increaseTwo)
+}
+
 const printName = (req,res)=>{
     res.send('my name is Bhaskar Purohit')
 }
@@ -25,6 +31,18 @@ const resume = (req, res)=>{
     res.send('I am a front end developer working with Capgemini')
 }
 
+const createUser = (req,res)=>{
+    res.send("first user created")
+}
+
+const deleteUser = (req, res)=>{
+    res.send('user is deleted')
+}
+
+
+app.post('/addTwo', addTwo)
+app.delete('/deleteUser', deleteUser)
+app.post('/createUser', createUser)
 app.get('/printName', printName)
 app.get('/resume', resume)
 app.get('/',(req,res)=>{
