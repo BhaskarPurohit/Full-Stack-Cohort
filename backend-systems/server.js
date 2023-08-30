@@ -41,6 +41,7 @@ const deleteUser = (req, res)=>{
 
 
 app.post('/addTwo', addTwo)
+
 app.delete('/deleteUser', deleteUser)
 app.post('/createUser', createUser)
 app.get('/printName', printName)
