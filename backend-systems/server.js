@@ -13,7 +13,8 @@ const calculateSum = (counter)=>{
 
 
 const handleSum = (req, res)=>{
-    let newSum = calculateSum(req.query.number)  //req.query.counter takes input from the user in the search bar
+    let newSum = calculateSum(req.headers.number) 
+    console.log(req.headers) //req.query.counter takes input from the user in the search bar
     res.send("new sum is "+newSum)
 }
 
@@ -51,7 +52,8 @@ app.get('/',(req,res)=>{
     res.send("express is running and the sum is "+ result)
 })
 
-app.get('/sum', handleSum)
+// app.get('/sum', handleSum)
+app.post('/sum', handleSum)
 
 
 app.listen(port ,()=>{
