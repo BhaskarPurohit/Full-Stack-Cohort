@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const port = 3000
-// const bodyParser = require("body-parser")
+const bodyParser = require("body-parser")
 
 
 const calculateSum = (counter)=>{
@@ -45,8 +45,8 @@ const deleteUser = (req, res)=>{
 
 const middleware = (req, res, next)=>{ 
     console.log("from inside the middleware " + req.headers.number)  
-    res.send("error from inside the middleware")
-    //next()  //calling next will make the control reach to the method
+    // res.send("error from inside the middleware")
+    next()  //calling next will make the control reach to the method
 } 
 
 //middleware intercepts the request and does whatever with it 
