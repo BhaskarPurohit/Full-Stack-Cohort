@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const port = 3000
-const bodyParser = require("body-parser")
+const bodyParser = require("body-parser") //express does not support body parser out of the box that is why we need external library
 
 
 const calculateSum = (counter)=>{
@@ -15,7 +15,8 @@ const calculateSum = (counter)=>{
 
 const handleSum = (req, res)=>{
     let newSum = calculateSum(req.headers.number) 
-    console.log(req.body) //req.query.counter takes input from the user in the search bar
+    console.log(req.body.number) //req.query.counter takes input from the user in the search bar
+
     res.send("new sum is "+newSum)
 }
 
@@ -54,7 +55,8 @@ const middleware = (req, res, next)=>{
 //global middleware handles all the requests
 //middleware can do bunch of global things before using the route handler
 
-app.use(middleware)  //registering the middleware
+//app.use(middleware)  //registering the middleware
+app.use(bodyParser.json())
 
 
 app.post('/addTwo', addTwo)
