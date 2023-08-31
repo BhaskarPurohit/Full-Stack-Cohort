@@ -40,6 +40,15 @@ const deleteUser = (req, res)=>{
     res.send('user is deleted')
 }
 
+//making a middleware function
+
+const middleware = (req, res, next)=>{
+    console.log("from inside the middleware" + req.headers.number)
+    next()
+} 
+
+app.use(middleware)  //registering the middleware
+
 
 app.post('/addTwo', addTwo)
 
