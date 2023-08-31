@@ -42,10 +42,13 @@ const deleteUser = (req, res)=>{
 
 //making a middleware function
 
-const middleware = (req, res, next)=>{
-    console.log("from inside the middleware" + req.headers.number)
-    next()
+const middleware = (req, res, next)=>{ 
+    console.log("from inside the middleware " + req.headers.number)  
+    res.send("error from inside the middleware")
+    //next()  //calling next will make the control reach to the method
 } 
+
+//middleware intercepts the request and does whatever with it 
 
 app.use(middleware)  //registering the middleware
 
