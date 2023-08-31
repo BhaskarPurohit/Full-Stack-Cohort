@@ -14,7 +14,7 @@ const calculateSum = (counter)=>{
 
 const handleSum = (req, res)=>{
     let newSum = calculateSum(req.headers.number) 
-    console.log(req.headers) //req.query.counter takes input from the user in the search bar
+    console.log(+req.headers) //req.query.counter takes input from the user in the search bar
     res.send("new sum is "+newSum)
 }
 
