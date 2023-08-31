@@ -49,6 +49,8 @@ const middleware = (req, res, next)=>{
 } 
 
 //middleware intercepts the request and does whatever with it 
+//middlewares are called before any route handler
+//global middleware handles all the requests
 
 app.use(middleware)  //registering the middleware
 
