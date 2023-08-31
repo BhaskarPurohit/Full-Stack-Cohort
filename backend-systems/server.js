@@ -42,6 +42,20 @@ const deleteUser = (req, res)=>{
     res.send('user is deleted')
 }
 
+const handleFirstRequest = (req, res)=>{
+    var counter = req.headers.counter
+    if((counter) < 10000){
+        var calculatedSum = calculateSum(counter)
+        var answer = "the calculated sum is "+ calculatedSum
+        res.send(answer)
+    }
+    else{
+        res.status(411).send("number is too big")
+    }
+}
+
+
+
 //making a middleware function
 
 const middleware = (req, res, next)=>{ 
@@ -60,7 +74,7 @@ app.use(bodyParser.json())
 
 
 app.post('/addTwo', addTwo)
-
+app.post('/handleFirstRequest', handleFirstRequest)
 app.delete('/deleteUser', deleteUser)
 app.post('/createUser', createUser)
 app.get('/printName', printName)
