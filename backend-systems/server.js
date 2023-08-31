@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const port = 3000
+// const bodyParser = require("body-parser")
 
 
 const calculateSum = (counter)=>{
@@ -14,7 +15,7 @@ const calculateSum = (counter)=>{
 
 const handleSum = (req, res)=>{
     let newSum = calculateSum(req.headers.number) 
-    console.log(req.headers) //req.query.counter takes input from the user in the search bar
+    console.log(req.body) //req.query.counter takes input from the user in the search bar
     res.send("new sum is "+newSum)
 }
 
@@ -51,6 +52,7 @@ const middleware = (req, res, next)=>{
 //middleware intercepts the request and does whatever with it 
 //middlewares are called before any route handler
 //global middleware handles all the requests
+//middleware can do bunch of global things before using the route handler
 
 app.use(middleware)  //registering the middleware
 
