@@ -62,6 +62,11 @@ const handleFirstRequest = (req, res)=>{
     res.status(200).send(answerObject)
 }
 
+const givePage = (req, res) =>{
+    res.sendFile(__dirname + '/index.html')
+}
+
+
 // const handleSecondRequest = (req, res)=>{
 //     var counter = req.body.counter
 //     var calculatedMul = calculateMul(counter)
@@ -86,7 +91,7 @@ const middleware = (req, res, next)=>{
 //app.use(middleware)  //registering the middleware
 app.use(bodyParser.json())
 
-
+app.get('/',givePage)
 app.post('/addTwo', addTwo)
 app.post('/handleFirstRequest', handleFirstRequest)
 // app.post('/handleSecondRequest',handleSecondRequest)
