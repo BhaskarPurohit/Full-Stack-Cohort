@@ -53,18 +53,20 @@ const deleteUser = (req, res)=>{
 const handleFirstRequest = (req, res)=>{
     var counter = req.body.counter
     var calculatedSum = calculateSum(counter)
+    var calculatedMul = calculateMul(counter)
     var answerObject = {
-        sum: calculatedSum
+        sum: calculatedSum,
+        mul: calculatedMul
 
     }
     res.status(200).send(answerObject)
 }
 
-const handleSecondRequest = (req, res)=>{
-    var counter = req.body.counter
-    var calculatedMul = calculateMul(counter)
-    var a
-}
+// const handleSecondRequest = (req, res)=>{
+//     var counter = req.body.counter
+//     var calculatedMul = calculateMul(counter)
+//     var a
+// }
 
 
 
@@ -87,7 +89,7 @@ app.use(bodyParser.json())
 
 app.post('/addTwo', addTwo)
 app.post('/handleFirstRequest', handleFirstRequest)
-app.post('/handleSecondRequest',handleSecondRequest)
+// app.post('/handleSecondRequest',handleSecondRequest)
 app.delete('/deleteUser', deleteUser)
 app.post('/createUser', createUser)
 app.get('/printName', printName)
