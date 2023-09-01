@@ -44,14 +44,12 @@ const deleteUser = (req, res)=>{
 
 const handleFirstRequest = (req, res)=>{
     var counter = req.body.counter
-    if((counter) < 10000){
-        var calculatedSum = calculateSum(counter)
-        var answer = "the calculated sum is "+ calculatedSum
-        res.send(answer)
+    var calculatedSum = calculateSum(counter)
+    var answerObject = {
+        sum: calculatedSum
+
     }
-    else{
-        res.status(411).send("number is too big")
-    }
+    res.status(200).send(answerObject)
 }
 
 
