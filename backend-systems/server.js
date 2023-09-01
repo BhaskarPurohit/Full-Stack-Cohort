@@ -12,6 +12,14 @@ const calculateSum = (counter)=>{
     return sum
 }
 
+const calculateMul = (counter)=>{
+    var mul = 1
+    for(let i=1; i<= counter; i++){
+        mul = mul*i
+    }
+    return mul
+}
+
 
 const handleSum = (req, res)=>{
     let newSum = calculateSum(req.headers.number) 
@@ -52,6 +60,12 @@ const handleFirstRequest = (req, res)=>{
     res.status(200).send(answerObject)
 }
 
+const handleSecondRequest = (req, res)=>{
+    var counter = req.body.counter
+    var calculatedMul = calculateMul(counter)
+    var a
+}
+
 
 
 //making a middleware function
@@ -73,6 +87,7 @@ app.use(bodyParser.json())
 
 app.post('/addTwo', addTwo)
 app.post('/handleFirstRequest', handleFirstRequest)
+app.post('/handleSecondRequest',handleSecondRequest)
 app.delete('/deleteUser', deleteUser)
 app.post('/createUser', createUser)
 app.get('/printName', printName)
