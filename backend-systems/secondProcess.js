@@ -1,12 +1,17 @@
 
+const logResponseBody = (jsonBody)=>{
+    console.log(jsonBody)
+}
+
+
 const callbackFn = (result)=>{
-    console.log(result)
+    result.json().then(logResponseBody)
 }
 
 
 var secondObj = {
-    method:"POST"
+    method:"GET"
 }
 
 
-fetch('https://localhost:3000', secondObj).then(callbackFn)
+fetch('https://localhost:3000/handleSum?counter=10', secondObj).then(callbackFn)
