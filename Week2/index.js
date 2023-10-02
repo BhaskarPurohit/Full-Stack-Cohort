@@ -7,6 +7,7 @@ const app = express()
 const port = 3000
 
 function calculateSum (counter){
+    
     var sum = 0
     for(var i=0; i< counter; i++){
         sum = sum+i
@@ -15,7 +16,8 @@ function calculateSum (counter){
 }
 
 const handleFirstRequest = (req, res)=>{
-    var calculatedSum = calSum(100)
+    var counter = req.query.counter
+    var calculatedSum = calSum(counter)
     res.send("hello express"+calculatedSum)
 }
 
