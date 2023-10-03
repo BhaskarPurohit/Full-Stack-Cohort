@@ -22,13 +22,26 @@ function calculateSum (counter){
 
 }
 
+function calculateMultiple (counter){
+    var multiple = 1
+    for(var i=1; i< counter; i++){
+        multiple = multiple*i
+    }
+    return multiple
+}
+
 const handleFirstRequest = (req, res)=>{
     // var counter = req.query.counter
     console.log(req.body)
     var counter = req.body.counter
-    console.log(req.headers)
-    var calculatedSum = calSum(counter)
-    res.send("hello express"+calculatedSum)
+    var calculatedSum = calculateSum(counter)
+    var calculatedMultiple = calculateMultiple(counter)
+
+    var answerObject = {
+        sum: calculatedSum,
+        multiple: calculateMultiple
+    }
+    res.status(200).send(answerObject)
 }
 
 const createUser = (req, res)=>{
