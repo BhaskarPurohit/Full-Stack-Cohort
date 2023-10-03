@@ -25,7 +25,7 @@ function calculateSum (counter){
 const handleFirstRequest = (req, res)=>{
     // var counter = req.query.counter
     console.log(req.body)
-    var counter = req.headers.counter
+    var counter = req.body.counter
     console.log(req.headers)
     var calculatedSum = calSum(counter)
     res.send("hello express"+calculatedSum)
