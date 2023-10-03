@@ -23,43 +23,29 @@ function calculateSum (counter){
 }
 
 function calculateMultiple (counter){
-    var multiple = 1
-    for(var i=1; i< counter; i++){
-        multiple = multiple*i
+    var answer = 1
+    for(var i=1; i<= counter; i++){
+        answer  = answer*i
     }
-    return multiple
+    return answer
 }
 
 const handleFirstRequest = (req, res)=>{
     // var counter = req.query.counter
-    console.log(req.body)
     var counter = req.body.counter
     var calculatedSum = calculateSum(counter)
     var calculatedMultiple = calculateMultiple(counter)
-
     var answerObject = {
-        sum: calculatedSum,
-        multiple: calculateMultiple
+        "sum": calculatedSum,
+        "mul": calculateMultiple,    
     }
     res.status(200).send(answerObject)
 }
 
-const createUser = (req, res)=>{
-    res.send("user created")
-}
 
-const updateUser = (req, res)=>{
-    res.send('user details updated')
-}
-
-const deleteUser = (req, res)=>{
-    res.send('user deleted')
-}
 
 app.post('/handleFirstRequest', handleFirstRequest)
-app.post('/createUser', createUser)
-app.put('/updateUser', updateUser)
-app.delete('/deleteUser', deleteUser)
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
@@ -76,13 +62,3 @@ app.listen(port, () => {
 
 
 
-const calSum = (counter)=>{
-    var sum = 0
-    for(var i=0; i<=counter; i++){
-        sum+=i
-    }return sum
-
-}
-
-var summation = calSum(100)
-console.log(summation);
