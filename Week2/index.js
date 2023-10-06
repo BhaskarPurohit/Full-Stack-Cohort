@@ -22,29 +22,25 @@ function calculateSum (counter){
 
 }
 
-function calculateMultiple (counter){
-    var answer = 1
-    for(var i=1; i<= counter; i++){
-        answer  = answer*i
-    }
-    return answer
-}
+
 
 const handleFirstRequest = (req, res)=>{
     // var counter = req.query.counter
-    var counter = req.body.counter
+    var counter = req.query.counter
     var calculatedSum = calculateSum(counter)
-    var calculatedMultiple = calculateMultiple(counter)
+
     var answerObject = {
         "sum": calculatedSum,
-        "mul": calculateMultiple,    
+        
     }
     res.status(200).send(answerObject)
 }
 
 
 
-app.post('/handleFirstRequest', handleFirstRequest)
+
+app.get('/handleFirstRequest', handleFirstRequest)
+// app.get('/', getPage)
 
 
 app.listen(port, () => {
