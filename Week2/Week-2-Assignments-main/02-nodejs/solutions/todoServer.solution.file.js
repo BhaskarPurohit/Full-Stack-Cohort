@@ -41,12 +41,15 @@ app.get('/todos/:id', (req, res) => {
   });
 });
 
+var ctr = 1
+
 app.post('/todos', (req, res) => {
   const newTodo = {
-    id: Math.floor(Math.random() * 1000000), // unique random id
+    id: ctr, // unique random id
     title: req.body.title,
     description: req.body.description
   };
+  ctr = ctr +1
   fs.readFile("todos.json", "utf8", (err, data) => {
     if (err) throw err;
     const todos = JSON.parse(data);
