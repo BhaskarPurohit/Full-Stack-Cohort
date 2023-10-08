@@ -26,14 +26,15 @@ app.get('/todos', (req, res) => {
   res.json(todos);
 });
 
-
+var ctr = 1
 
 app.post('/todos', (req, res) => {
   const newTodo = {
-    id: Math.floor(Math.random() * 1000000), // unique random id
+    id: ctr, // unique random id
     title: req.body.title,
     description: req.body.description
   };
+  ctr = ctr + 1
   todos.push(newTodo);
   res.status(201).json(newTodo);
 });
