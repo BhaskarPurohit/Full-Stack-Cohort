@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require("fs");
+const path = require("path")
 
 const app = express();
 
@@ -74,6 +75,11 @@ app.delete('/todos/:id', (req, res) => {
 app.use((req, res, next) => {
   res.status(404).send();
 });
+
+app.get('/',(req,res)=>{
+  res.sendFile(path.join(__dirname,"index.html"))
+})
+
 console.log("app is listening")
 // module.exports = app;
 app.listen(3000)
